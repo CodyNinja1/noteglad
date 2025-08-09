@@ -38,6 +38,10 @@ function SetSelectedText(TextAreaElem, SelectionStart, SelectionEnd, TextToPut)
             {
                 navigator.clipboard.writeText(TextToPut);
             }
+            else
+            {
+                console.log("clipboard blocked");
+            }
         });
         return;
     }
@@ -250,7 +254,7 @@ window.addEventListener('resize', Main);
 document.addEventListener('keyup', function(e) 
 {
     let TextAreaElem = document.getElementById("textarea"); 
-    g_PressedKeys[e.key] = false; 
+    g_PressedKeys[e.key] = false;
     if (GetSelectedText(TextAreaElem) !== "")
     {
         if (HandleSelection(GetSelectedText(TextAreaElem)))
