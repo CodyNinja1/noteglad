@@ -33,8 +33,12 @@ function SetSelectedText(TextAreaElem, SelectionStart, SelectionEnd, TextToPut)
 {
     if (g_PressedKeys["Shift"])
     {
-        navigator.permissions.query({ name: 'clipboard-read' });
-        navigator.clipboard.writeText(TextToPut);
+        navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+            if (result.state === "granted" || result.state === "prompt") 
+            {
+                navigator.clipboard.writeText(TextToPut);
+            }
+        });
         return;
     }
     const TextAreaValue = TextAreaElem.value;
