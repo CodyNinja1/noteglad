@@ -254,7 +254,7 @@ window.addEventListener('resize', Main);
 document.addEventListener('keyup', function(e) 
 {
     let TextAreaElem = document.getElementById("textarea"); 
-    g_PressedKeys[e.key] = false;
+    g_PressedKeys[e.key.toLowerCase()] = false;
     if (GetSelectedText(TextAreaElem) !== "")
     {
         if (HandleSelection(GetSelectedText(TextAreaElem)))
@@ -268,7 +268,7 @@ document.addEventListener('keyup', function(e)
 document.addEventListener('keydown', function(e) 
 {
     let TextAreaElem = document.getElementById("textarea"); 
-    g_PressedKeys[e.key] = true; 
+    g_PressedKeys[e.key.toLowerCase()] = true; 
     if (GetSelectedText(TextAreaElem) !== "")
     {
         if (HandleSelection(GetSelectedText(TextAreaElem)))
